@@ -16,10 +16,14 @@ def login():
             return redirect("/shifts")
     return render_template("login.html")
 
+from functools import wraps
+from flask import session, redirect
 
 def login_required(fn):
+    @wraps(fn)
     def wrapper(*args, **kwargs):
         if not session.get("logged_in"):
             return redirect("/")
         return fn(*args, **kwargs)
     return wrapper
+
