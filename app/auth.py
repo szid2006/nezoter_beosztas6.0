@@ -1,6 +1,12 @@
 from flask import Blueprint, request, session, redirect, render_template
+import os
 
-auth = Blueprint("auth", __name__)
+auth = Blueprint(
+    "auth",
+    __name__,
+    template_folder="templates"
+)
+
 
 USERNAME = "admin"
 PASSWORD = "1234"
