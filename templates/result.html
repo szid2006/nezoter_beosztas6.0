@@ -1,0 +1,10 @@
+<h2>Eredmény</h2>
+
+{% for shift in schedule %}
+  <h3>{{ shift.show_name }} – {{ shift.datetime }}</h3>
+  <ul>
+    {% for role, names in shift.assigned.items() %}
+      <li>{{ role }}: {{ names|join(", ") }}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
